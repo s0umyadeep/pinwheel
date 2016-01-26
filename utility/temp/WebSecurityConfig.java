@@ -8,10 +8,11 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
 
-@Configuration
-@EnableWebMvcSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-	@Override
+//@Configuration
+//@EnableWebMvcSecurity
+//extends WebSecurityConfigurerAdapter
+public class WebSecurityConfig  {
+	//@Override
     protected void configure(HttpSecurity http) throws Exception {
 //		http
 //			.authorizeRequests()
@@ -40,7 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 	
 
-	@Autowired
+	//@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		auth.inMemoryAuthentication().withUser("user@user.com").password("password").roles("USER");
 	}
