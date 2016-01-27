@@ -1,27 +1,23 @@
 package com.utility.elasticsearch;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.Random;
+import java.util.Set;
 
-import javax.annotation.Resource;
-
-import org.apache.commons.lang.StringUtils;
-import org.elasticsearch.client.Client;
-import org.elasticsearch.client.transport.TransportClient;
-import org.elasticsearch.common.transport.InetSocketTransportAddress;
-import org.elasticsearch.common.transport.TransportAddress;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.elasticsearch.client.TransportClientFactoryBean;
-import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
-import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 
-@SpringBootApplication
-public class QuestionProcessor implements CommandLineRunner {
+import com.google.common.base.Charsets;
+import com.google.common.io.Files;
+
+
+public abstract class QuestionProcessor implements CommandLineRunner {
 	@Autowired
 	private QuestionRepository repository;
 
@@ -34,22 +30,8 @@ public class QuestionProcessor implements CommandLineRunner {
 		return transportClientFactoryBean;
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
-		// this.repository.deleteAll();
-		if (args != null) {
-			if (Stream.of(args).anyMatch(arg -> {
-				return StringUtils.equalsIgnoreCase(arg, "add");
-			})) {
-				saveQuestions();
-			} else {
-				List<String> numbersToPick = selectRandomly();
-				fetchQuestions(numbersToPick);
-			}
-		}
-	}
 
-	private List<Question> fetchQuestions(List<String> numbersToPick) {
+	protected List<Question> fetchQuestions(List<String> numbersToPick) {
 		List<Question> questions = new LinkedList<>();
 		if (numbersToPick != null) {
 			numbersToPick.forEach(number -> {
@@ -59,44 +41,42 @@ public class QuestionProcessor implements CommandLineRunner {
 		return questions;
 	}
 
-	private void saveQuestions() {
-		// TODO Auto-generated method stub
-
+	protected void saveQuestions() throws IOException {
+		List<String> lines = Files.readLines(new File("/Users/soum/Documents/evernotes-export/out-m1.txt"),
+				Charsets.UTF_8);
+		if (lines != null) {
+			int id = 1;
+			for (String line : lines) {
+				Question question = new Question();
+				question.setId(String.valueOf(id));
+				question.setQuestionText(line);
+				repository.save(question);
+				id += 1;
+			}
+		}
 	}
 
-	private List<String> selectRandomly() {
+	protected List<String> selectRandomly() {
 		List<String> numbersToPick = new LinkedList<>();
-		numbersToPick.add("1");
+		Set<Integer> duplicateRemover = new HashSet<>();
+		Random r = new Random();
+		int howmanyQuestions = 50;
+		int retry = 0;
+		for (int i = 0; i < howmanyQuestions; i++) {
+			int low = 1;
+			int high = 649;
+			int result = r.nextInt(high - low) + low;
+			if (duplicateRemover.contains(result)) {
+				i -= 1;
+				retry += 1;
+				continue;
+			}
+			duplicateRemover.add(result);
+			System.out.println((i + 1) + ". " + result);
+			numbersToPick.add(String.valueOf(result));
+		}
+		System.out.println("# of retry is " + retry);
 		return numbersToPick;
 	}
 
-	// private void saveCustomers() {
-	// this.repository.save(new Customer("Alice", "Smith"));
-	// this.repository.save(new Customer("Bob", "Smith"));
-	// }
-
-	// private void fetchAllCustomers() {
-	// System.out.println("Customers found with findAll():");
-	// System.out.println("-------------------------------");
-	// for (Customer customer : this.repository.findAll()) {
-	// System.out.println(customer);
-	// }
-	// System.out.println();
-	// }
-	//
-	// private void fetchIndividualCustomers() {
-	// System.out.println("Customer found with findByFirstName('Alice'):");
-	// System.out.println("--------------------------------");
-	// System.out.println(this.repository.findByFirstName("Alice"));
-	//
-	// System.out.println("Customers found with findByLastName('Smith'):");
-	// System.out.println("--------------------------------");
-	// for (Customer customer : this.repository.findByLastName("Smith")) {
-	// System.out.println(customer);
-	// }
-	// }
-
-	public static void main(String[] args) throws Exception {
-		SpringApplication.run(QuestionProcessor.class, "--debug").close();
-	}
 }
