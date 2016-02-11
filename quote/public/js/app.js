@@ -1,13 +1,24 @@
 'use strict';
 
 angular.module('quote', [ 'ngCookies' ]).controller('quoteController',
-		[ '$cookies', '$scope', function($cookies, $scope) {
-			var favoriteCookie = $cookies.get('myFavorite');
-			if (favoriteCookie == null) {
-				$scope.check = "Not set";
+		[ '$cookies', '$scope', '$http', function($cookies, $scope, $http) {
+
+			var counter = $cookies.get('counter');
+			if (counter == null) {
+				$cookies.put('counter', 1);
 			} else {
-				$scope.check = favoriteCookie;
+				$cookies.put('counter', ++counter);
 			}
-			// Setting a cookie
-			$cookies.put('myFavorite', 'oatmeal');
+			if (counter % 7 != 0) {
+				$http({
+					method : 'GET',
+					url : '/quote'
+				}).then(function successCallback(response) {
+					$scope.qdata = response.data;
+				}, function errorCallback(response) {
+				});
+			} else{
+				$scope.qdata = {"author":"Al Gore","topic":"Politics","quoteText":"No you did not"};
+			}
+
 		} ]);
