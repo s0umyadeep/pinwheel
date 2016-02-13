@@ -23,7 +23,7 @@ angular.module('quote', [ 'ngCookies' ]).controller('quoteController',
 					url : '/quote'
 				}).then(function successCallback(response) {
 					//$scope.qdata = response.data;
-					$scope.text = response.data.quoteText+" -"+response.data.author;
+					$scope.text = response.data.quoteText+" - "+response.data.author;
 					$scope.topic = "Topics: " +response.data.topic;
 				}, function errorCallback(response) {
 				});
