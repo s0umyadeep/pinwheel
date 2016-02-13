@@ -3,7 +3,7 @@
 The front end was developed in angularjs, and server was in java spring boot. The spring boot uses an internal tomcat server, which is where the application will be deployed to. The layers/architecture is pretty much standard java webapp. The frontend written in angular calls java server to get the json object, transforms and presents it in the view. 
 
 ## Download
-* https://github.com/s0umyadeep/pinwheel/tree/master/quote/binary/quote-0.0.1.jar
+* https://github.com/s0umyadeep/pinwheel/blob/master/quote/binary/quote-0.0.1.jar?raw=true
 
 
 ## Installation
