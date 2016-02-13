@@ -1,4 +1,23 @@
-{"id":"1","quotes": [{"author":"Al Gore1","topic":"Politics","quoteText":"I invented the internet1."},
-{"author":"Al Gore2","topic":"Politics","quoteText":"I invented the internet2."},
-{"author":"Al Gore3","topic":"Politics","quoteText":"I invented the internet3."}
+{"id":"1","quotes": [{"author":"Abraham Lincoln","topic":"philosophy","quoteText":"In the end, it's not the years in your life that count. It's the life in your years."},
+{"author":"George Bernard Shaw","topic":"philosophy","quoteText":"Life isn't about finding yourself. Life is about creating yourself."},
+{"author":"Martin Luther King, Jr.","topic":"philosophy","quoteText":"Life's most persistent and urgent question is, 'What are you doing for others?'"},
+{"author":"William J. Clinton","topic":"philosophy","quoteText":"If you live long enough, you'll make mistakes. But if you learn from them, you'll be a better person. It's how you handle adversity, not how it affects you. The main thing is never quit, never quit, never quit."},
+{"author":"Dalai Lama","topic":"philosophy","quoteText":"The purpose of our lives is to be happy."},
+{"author":"Doug Larson","topic":"politics","quoteText":"Instead of giving a politician the keys to the city, it might be better to change the locks."},
+{"author":"John F. Kennedy","topic":"politics","quoteText":"Let us not seek the Republican answer or the Democratic answer, but the right answer. Let us not seek to fix the blame for the past. Let us accept our own responsibility for the future."},
+{"author":"Dante Alighieri","topic":"politics","quoteText":"The darkest places in hell are reserved for those who maintain their neutrality in times of moral crisis."},
+{"author":"Napoleon Bonaparte","topic":"politics","quoteText":"I love power. But it is as an artist that I love it. I love it as a musician loves his violin, to draw out its sounds and chords and harmonies."},
+{"author":"Will Rogers","topic":"politics","quoteText":"I don't make jokes. I just watch the government and report the facts."},
+{"author":"Ann Landers","topic":"love","quoteText":"Love is friendship that has caught fire. It is quiet understanding, mutual confidence, sharing and forgiving. It is loyalty through good and bad times. It settles for less than perfection and makes allowances for human weaknesses."},
+{"author":"Erich Fromm","topic":"love","quoteText":"Immature love says: 'I love you because I need you.' Mature love says 'I need you because I love you.'"},
+{"author":"Mother Teresa","topic":"love","quoteText":"Let us always meet each other with smile, for the smile is the beginning of love."},
+{"author":"Oscar Wilde","topic":"love","quoteText":"Keep love in your heart. A life without it is like a sunless garden when the flowers are dead."},
+{"author":"Lao Tzu","topic":"love","quoteText":"Being deeply loved by someone gives you strength, while loving someone deeply gives you courage."},
+{"author":"Ophelia in Hamlet","topic":"psychology","quoteText":"We know what we are but not what we may be."},
+{"author":"Thomas Edison","topic":"psychology","quoteText":"I have not failed. I have just found 10,000 things that do not work."},
+{"author":"Albert Einstein","topic":"psychology","quoteText":"Great spirits have often overcome violent opposition from mediocre minds."},
+{"author":"Roz Savage","topic":"psychology","quoteText":"Ocean rowing is very much what you make it. Rowing technique is pretty irrelevant on the ocean. It's the psychology that's important."},
+{"author":"Dane Cook","topic":"psychology","quoteText":"I am an observer, I like to watch people. I am into psychology and people - how they act and such."},
+{"author":"Sigmund Freud","topic":"psychology","quoteText":"We are so made, that we can only derive intense enjoyment from a contrast and only very little from a state of things."}
 ]}
+
