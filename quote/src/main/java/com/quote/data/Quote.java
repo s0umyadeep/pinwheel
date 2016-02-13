@@ -1,4 +1,4 @@
-package com.quote;
+package com.quote.data;
 
 public class Quote {
 	private String author;

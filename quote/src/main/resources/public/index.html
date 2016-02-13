@@ -9,16 +9,16 @@
 </head>
 <body>
 	<div class="container" ng-controller="quoteController">
-		<div class="header clearfix">
-			<h3 class="text-muted"></h3>
-			<div class="jumbotron">
-				<h1>Quote of The Day</h1>
-				<p class="lead">{{qdata.quoteText}}</p>
-				<p>
-					<a class="btn btn-lg btn-primary" href="javascript:window.location.reload();" role="button">Refresh</a>
-
-				</p>
-			</div>
+		<h3 class="text-muted"></h3>
+		<div class="jumbotron">
+			<h2>{{title}}</h2>
+			<p class="lead">{{text}}</p>
+			<hr />
+			<span class="small">{{topic}}</span>
+			<p></p>
+			<p>
+				<a class="{{buttonStyle}}" ng-click="reloadWindow()" role="button">{{buttonName}}</a>
+			</p>
 		</div>
 	</div>
 
